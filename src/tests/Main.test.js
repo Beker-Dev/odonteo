@@ -120,7 +120,7 @@ describe('Test Login Page', () => {
             value: '2023-04-10'
         }})
         fireEvent.click(registerBillingBtn)
-        const msg = screen.getByText(/Cobrança cadastrada com sucesso/i)
+        const msg = screen.getByText(/Registro efetuado com sucesso!/i)
         expect(msg).toBeInTheDocument()
     })
 })

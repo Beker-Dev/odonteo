@@ -89,7 +89,7 @@ function Main() {
       // }
       if (paymentAmount && numberOfInstallments && billingDay && firstInstallmentDate) {
         status = 'success'
-        text = 'Cobrança cadastrada com sucesso'
+        text = 'Registro efetuado com sucesso!'
       }
     }
 

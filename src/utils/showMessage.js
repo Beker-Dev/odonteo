@@ -11,5 +11,5 @@ export default function showMessage(setMessage, text, status) {
       text: '',
       status: ''
     })
-  }, 2000);
+  }, 4000);
 }
