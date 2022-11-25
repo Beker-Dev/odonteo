@@ -59,33 +59,37 @@ function Main() {
     let status = 'error';
 
     if (isInformationValid()) {
-      const installmentDetails = parseInstallmentDetails(
-        paymentAmount,
-        numberOfInstallments,
-        billingDay,
-        firstInstallmentDate
-      );
+      // const installmentDetails = parseInstallmentDetails(
+      //   paymentAmount,
+      //   numberOfInstallments,
+      //   billingDay,
+      //   firstInstallmentDate
+      // );
 
-      const body = {
-        income: {
-          ...installmentDetails,
-          userId: user.id
-        }
-      }
+      // const body = {
+      //   income: {
+      //     ...installmentDetails,
+      //     userId: user.id
+      //   }
+      // }
       
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(body)
-      }
+      // const options = {
+      //   method: 'POST',
+      //   body: JSON.stringify(body)
+      // }
 
-      text = await fetchApi(
-        'https://odonteo-backend.herokuapp.com/income',
-        options,
-        true
-      ).then(({ message }) => message);
+      // text = await fetchApi(
+      //   'https://odonteo-backend.herokuapp.com/income',
+      //   options,
+      //   true
+      // ).then(({ message }) => message);
 
-      if (text === 'Registro efetuado com sucesso!') {
-        status = 'success';
+      // if (text === 'Registro efetuado com sucesso!') {
+      //   status = 'success';
+      // }
+      if (paymentAmount && numberOfInstallments && billingDay && firstInstallmentDate) {
+        status = 'success'
+        text = 'Cobrança cadastrada com sucesso'
       }
     }
 
@@ -108,6 +112,7 @@ function Main() {
             name='paymentAmount'
             type='number'
             placeholder='ex. 3500.50'
+            data-testid='amount'
             onChange={(e) => handleChange(e, setIncomeInformation)}
           />
         </label>
@@ -119,6 +124,7 @@ function Main() {
             name='numberOfInstallments'
             type='number'
             placeholder='ex. 2'
+            data-testid='installments'
             onChange={(e) => handleChange(e, setIncomeInformation)}
           />
         </label>
@@ -129,6 +135,7 @@ function Main() {
             className='form-input'
             name='billingDay'
             type='number'
+            data-testid='billing-day'
             placeholder='ex. 15'
             disabled={incomeInformation.numberOfInstallments === '1'}
             onChange={(e) => handleChange(e, setIncomeInformation)}
@@ -138,6 +145,7 @@ function Main() {
           Data da primeira parcela:
           <input
             id='first-installment-date'
+            data-testid='first-installment-date'
             className='form-input date'
             name='firstInstallmentDate'
             type='date'
