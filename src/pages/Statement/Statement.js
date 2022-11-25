@@ -64,6 +64,7 @@ function Statement() {
           <input
             className='form-input date'
             id='beginning-date'
+            data-testid='initial-date-id'
             name='beginningDate'
             type='date'
             onChange={(e) => handleChange(e, setDatesOfStatement)}
@@ -74,6 +75,7 @@ function Statement() {
           <input
             className='form-input date'
             id='ending-date'
+            data-testid='end-date-id'
             name='endingDate'
             type='date'
             onChange={(e) => handleChange(e, setDatesOfStatement)}
