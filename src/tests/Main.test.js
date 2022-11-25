@@ -8,7 +8,7 @@ describe('Test Login Page', () => {
         }));
     });
 
-    it('Should consult billing', async () => {
+    it('Should register billing', async () => {
         render(<App/>)
     })
 })
