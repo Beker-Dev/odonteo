@@ -33,25 +33,31 @@ function Login() {
     if (!validEmail || !validPassword) {
       return showMessage(setMessage, 'Email ou senha em formato incorreto.', 'error');
     }
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(loginInformation)
-    }
-
-    const { 
-      user,
-      message: apiMessage,
-      token
-    } = await fetchApi('https://odonteo-backend.herokuapp.com/login', options);
-    
-    if (apiMessage === 'Login efetuado com sucesso!') {
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('token', JSON.stringify(token));
+    else {
+      localStorage.setItem('user', JSON.stringify({'email': loginInformation.email, 'password': loginInformation.password}));
+      localStorage.setItem('token', JSON.stringify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"));
       navigate('/');
-    } else {
-      showMessage(setMessage, apiMessage, 'error');
     }
+
+    // const options = {
+    //   method: 'POST',
+    //   body: JSON.stringify(loginInformation)
+    // }
+
+    // const { 
+    //   user,
+    //   message: apiMessage,
+    //   token
+    // } = await fetchApi('https://odonteo-backend.herokuapp.com/login', options);
+    
+    // if (apiMessage === 'Login efetuado com sucesso!') {
+    //   localStorage.setItem('user', JSON.stringify(user));
+    //   localStorage.setItem('token', JSON.stringify(token));
+    //   navigate('/');
+    // } else {
+    //   showMessage(setMessage, apiMessage, 'error');
+    // }
+
   }
 
   return (
